@@ -10,6 +10,7 @@ public:
             if (seen.count(n)) return false;
 
             seen.insert(n);
+
             int sum = 0;
             int temp = n;
 
