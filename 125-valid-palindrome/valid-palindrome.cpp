@@ -1,35 +1,26 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 class Solution {
 public:
     bool isPalindrome(string s) {
-        string t;
-        bool rushil = true;
-        for(int i =0; i< s.length(); i++){
-            if(!(s[i]>='A' && s[i]<='Z')){
-                if(!(s[i]>='a' && s[i]<='z')){
-                    if(!(s[i] >= '0' && s[i] <= '9' )){
-                        continue;   
-                    }
-                }
-            }
-            t += tolower(s[i]);
-        }
-        if(t.length() == 1) return true;
-        int i = 0;
-        int j = t.length()-1;
-        while (j>i)
+        int l = 0;
+        int r = s.length() - 1;
+
+        while (l <= r)
         {
-            if(t[i] != t[j])
-            {
-                rushil = false;
-                break;
+            if(!((s[l] >= 'a' && s[l] <= 'z') || (s[l] >= 'A' && s[l] <= 'Z') || (s[l] >= '0' && s[l] <= '9'))){
+                l++;
+                continue;
             }
-            i++;
-            j--;
+            if(!((s[r] >= 'a' && s[r] <= 'z') || (s[r] >= 'A' && s[r] <= 'Z') || (s[r] >= '0' && s[r] <= '9'))){
+                r--;
+                continue;
+            }
+
+            if(tolower(s[l]) != tolower(s[r])){
+                return false;
+            }
+            l++;
+            r--;
         }
-        if(rushil) return true;
-        else return false;
+        return true;
     }
 };
