@@ -8,10 +8,8 @@ void findSum(int i, vector<int>& cand, vector<int>& temp,
 
     for(int j = i; j < cand.size(); j++) {
 
-        // skip duplicates
         if(j > i && cand[j] == cand[j-1]) continue;
 
-        // pruning
         if(cand[j] > target) break;
 
         temp.push_back(cand[j]);
